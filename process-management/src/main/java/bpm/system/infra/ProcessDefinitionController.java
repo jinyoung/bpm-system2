@@ -33,7 +33,7 @@ public class ProcessDefinitionController {
         System.out.println(
             "##### /processDefinition/createProcess  called #####"
         );
-        processDefinition.createProcess(createProcesscommand);
+        //processDefinition.createProcess(createProcesscommand);
         processDefinitionRepository.save(processDefinition);
         return processDefinition;
     }

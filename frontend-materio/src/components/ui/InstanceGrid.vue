@@ -128,7 +128,6 @@
 <script>
 import { ref } from 'vue';
 import { useTheme } from 'vuetify';
-import DrawerContent from '../../../layouts/components/DrawerContent.vue';
 import BaseGrid from '../base-ui/BaseGrid.vue'
 import Instance from '../Instance.vue'
 import Number from '../primitives/Number.vue'
@@ -140,7 +139,6 @@ export default {
     name: 'instanceGrid',
     mixins:[BaseGrid],
     components:{
-        DrawerContent,
         Instance,
         Number,
         String,
