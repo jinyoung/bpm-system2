@@ -7,10 +7,6 @@
         <v-card-text>
             <Number label="ProcessId" v-model="value.processId" :editMode="editMode"/>
             <String label="NewProcessName" v-model="value.newProcessName" :editMode="editMode"/>
-            <List&lt;Task&gt; offline label="NewTaskList" v-model="value.newTaskList" :editMode="editMode" @change="change"/>
-            <TaskList offline label="NewTaskList" v-model="value.newTaskList" :editMode="editMode" @change="change"/>
-            <List&lt;Permission&gt; offline label="NewPermissions" v-model="value.newPermissions" :editMode="editMode" @change="change"/>
-            <PermissionList offline label="NewPermissions" v-model="value.newPermissions" :editMode="editMode" @change="change"/>
         </v-card-text>
 
         <v-card-actions>
@@ -48,8 +44,6 @@
         created() {
             this.value.processId = 0;
             this.value.newProcessName = '';
-            this.value.newTaskList = [];
-            this.value.newPermissions = [];
         },
         watch: {
         },

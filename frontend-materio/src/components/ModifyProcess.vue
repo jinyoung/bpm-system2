@@ -8,8 +8,6 @@
         <v-card-text>
             <Number label="ProcessId" v-model="value.processId" :editMode="editMode"/>
             <String label="NewProcessName" v-model="value.newProcessName" :editMode="editMode"/>
-            <TaskList offline label="NewTaskList" v-model="value.newTaskList" :editMode="editMode" @change="change"/>
-            <PermissionList offline label="NewPermissions" v-model="value.newPermissions" :editMode="editMode" @change="change"/>
         </v-card-text>
 
         <v-card-actions>
@@ -52,8 +50,6 @@ export default {
     created() {
         this.value.processId = 0;
         this.value.newProcessName = '';
-        this.value.newTaskList = [];
-        this.value.newPermissions = [];
     },
     watch: {
     },

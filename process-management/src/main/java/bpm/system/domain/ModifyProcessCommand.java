@@ -9,6 +9,4 @@ public class ModifyProcessCommand {
 
     private Long processId;
     private String newProcessName;
-    private List<Task> newTaskList;
-    private List<Permission> newPermissions;
 }

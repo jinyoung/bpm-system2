@@ -56,12 +56,6 @@ paths:
                 newProcessName:
                   description: newProcessName of this ModifyProcess
                   type: string
-                newTaskList:
-                  description: newTaskList of this ModifyProcess
-                  type: string
-                newPermissions:
-                  description: newPermissions of this ModifyProcess
-                  type: string
             examples: null
       parameters:
         - name: id
@@ -99,12 +93,6 @@ paths:
               properties:
                 processName:
                   description: processName of this CreateProcess
-                  type: string
-                taskList:
-                  description: taskList of this CreateProcess
-                  type: string
-                permissions:
-                  description: permissions of this CreateProcess
                   type: string
             examples: null
       parameters:

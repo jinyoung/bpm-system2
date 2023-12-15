@@ -1,7 +1,6 @@
 package bpm.system.domain;
 
 import bpm.system.ProcessManagementApplication;
-import bpm.system.domain.ProcessDefined;
 import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
@@ -25,12 +24,6 @@ public class Process {
     @ElementCollection
     private List<Message> messages;
 
-    @PostPersist
-    public void onPostPersist() {
-        ProcessDefined processDefined = new ProcessDefined(this);
-        processDefined.publishAfterCommit();
-    }
-
     @PrePersist
     public void onPrePersist() {}
 
@@ -41,6 +34,15 @@ public class Process {
         return processRepository;
     }
 
+    //<<< Clean Arch / Port Method
+    public void createProcess(CreateProcessCommand createProcessCommand) {
+        //implement business logic here:
+
+        ProcessDefined processDefined = new ProcessDefined(this);
+        processDefined.publishAfterCommit();
+    }
+
+    //>>> Clean Arch / Port Method
     //<<< Clean Arch / Port Method
     public void modifyProcess(ModifyProcessCommand modifyProcessCommand) {
         //implement business logic here:

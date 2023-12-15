@@ -13,8 +13,6 @@ public class ProcessDefined extends AbstractEvent {
 
     private Long processId;
     private String processName;
-    private List<Task> taskList;
-    private List<Permission> permissions;
 
     public ProcessDefined(Process aggregate) {
         super(aggregate);
