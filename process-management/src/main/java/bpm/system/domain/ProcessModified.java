@@ -13,8 +13,6 @@ public class ProcessModified extends AbstractEvent {
 
     private Long processId;
     private String newProcessName;
-    private List<Task> newTaskList;
-    private List<Permission> newPermissions;
 
     public ProcessModified(Process aggregate) {
         super(aggregate);

@@ -13,6 +13,9 @@ public class ProcessHateoasProcessor
     @Override
     public EntityModel<Process> process(EntityModel<Process> model) {
         model.add(
+            Link.of(model.getRequiredLink("self").getHref() + "/").withRel("")
+        );
+        model.add(
             Link
                 .of(model.getRequiredLink("self").getHref() + "/modifyprocess")
                 .withRel("modifyprocess")

@@ -21,6 +21,22 @@ public class ProcessController {
     ProcessRepository processRepository;
 
     @RequestMapping(
+        value = "processes/",
+        method = RequestMethod.POST,
+        produces = "application/json;charset=UTF-8"
+    )
+    public Process createProcess(
+        HttpServletRequest request,
+        HttpServletResponse response,
+        @RequestBody Process process
+    ) throws Exception {
+        System.out.println("##### /process/createProcess  called #####");
+        process.createProcess(createProcesscommand);
+        processRepository.save(process);
+        return process;
+    }
+
+    @RequestMapping(
         value = "processes/{id}/modifyprocess",
         method = RequestMethod.PUT,
         produces = "application/json;charset=UTF-8"

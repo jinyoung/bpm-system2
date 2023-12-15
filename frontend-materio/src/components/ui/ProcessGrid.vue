@@ -18,6 +18,15 @@
                 <v-btn style="margin-left: 5px;" @click="openEditDialog()" class="contrast-primary-text" small color="primary">
                     <v-icon small>mdi-pencil</v-icon>수정
                 </v-btn>
+                <v-btn style="margin-left: 5px;" @click="createProcessDialog = true" class="contrast-primary-text" small color="primary" :disabled="!hasRole('Administrator')">
+                    <v-icon small>mdi-minus-circle-outline</v-icon>프로세스 생성
+                </v-btn>
+                <v-dialog v-model="createProcessDialog" width="500">
+                    <CreateProcess
+                        @closeDialog="createProcessDialog = false"
+                        @createProcess="createProcess"
+                    ></CreateProcess>
+                </v-dialog>
                 <v-btn style="margin-left: 5px;" @click="modifyProcessDialog = true" class="contrast-primary-text" small color="primary" :disabled="!hasRole('Administrator')">
                     <v-icon small>mdi-minus-circle-outline</v-icon>프로세스 수정
                 </v-btn>
@@ -142,6 +151,7 @@ import BaseGrid from '../base-ui/BaseGrid.vue'
 import Process from '../Process.vue'
 import String from '../primitives/String.vue'
 import MessageDetailGrid from './MessageDetailGrid.vue'
+import CreateProcess from '../CreateProcess.vue'
 import ModifyProcess from '../ModifyProcess.vue'
 import ReviewProcess from '../ReviewProcess.vue'
 
@@ -153,17 +163,29 @@ export default {
         Process,
         String,
         MessageDetailGrid,
+        CreateProcess,
         ModifyProcess,
         ReviewProcess,
     },
     data: () => ({
         path: 'processes',
+        createProcessDialog: false,
         modifyProcessDialog: false,
         reviewProcessDialog: false,
     }),
     watch: {
     },
     methods:{
+        createProcess(params){
+            try{
+                this.repository.invoke(this.getSelectedItem(), "createProcess", params)
+                this.$EventBus.$emit('show-success','CreateProcess 성공적으로 처리되었습니다.')
+                this.createProcessDialog = false
+            }catch(e){
+                console.log(e)
+            }
+            
+        },
         modifyProcess(params){
             try{
                 this.repository.invoke(this.getSelectedItem(), "modifyProcess", params)

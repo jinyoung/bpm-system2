@@ -8,6 +8,4 @@ import lombok.Data;
 public class CreateProcessCommand {
 
     private String processName;
-    private List<Task> taskList;
-    private List<Permission> permissions;
 }
