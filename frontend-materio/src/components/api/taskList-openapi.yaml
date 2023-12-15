@@ -1,0 +1,204 @@
+---
+paths:
+  '/taskLists/{id}/':
+    get:
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                userId:
+                  description: userId of this QueryTaskList
+                  type: string
+            examples: null
+      parameters:
+        - name: id
+          description: QueryTaskList name
+          schema:
+            type: integer
+          in: path
+          required: true
+          examples: null
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TaskList'
+              examples:
+                '1':
+                  value:
+                    taskId: 1
+                    userId: 1
+                    taskName: A string
+                    status: A string
+          description: QueryTaskList Operation
+      operationId: QueryTaskList
+      summary: QueryTaskList
+      description: QueryTaskList
+    summary: CompleteTask operation on taskLists
+  /taskLists:
+    summary: Global operations on taskLists
+    get:
+      tags:
+        - taskLists
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/TaskList'
+              examples:
+                taskLists_json:
+                  value:
+                    - taskId: 1
+                      userId: 1
+                      taskName: A string
+                      status: A string
+          description: Get list of taskLists
+      operationId: GetTaskList
+      summary: Get list of taskLists
+    post:
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TaskList'
+            examples:
+              '1':
+                value:
+                  taskId: 1
+                  userId: 1
+                  taskName: A string
+                  status: A string
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TaskList'
+              examples:
+                '1':
+                  value:
+                    taskId: 1
+                    userId: 1
+                    taskName: A string
+                    status: A string
+          description: Changed TaskList
+      operationId: Post TaskList
+      summary: Post TaskList
+  '/taskLists/{id}':
+    summary: Specific operation on taskLists
+    get:
+      parameters:
+        - examples:
+            '1':
+              value: 1
+          name: id
+          description: TaskList name
+          schema:
+            type: integer
+          in: path
+          required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TaskList'
+              examples:
+                '1':
+                  value:
+                    taskId: 1
+                    userId: 1
+                    taskName: A string
+                    status: A string
+          description: taskLists with specified id
+      operationId: GetTaskListById
+      summary: Get TaskList by id
+      description: Get TaskList by id
+    patch:
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TaskList'
+            examples:
+              '1':
+                value:
+                  taskId: 1
+                  userId: 1
+                  taskName: A string
+                  status: A string
+        required: true
+      parameters:
+        - examples:
+            '1':
+              value: 1
+          name: taskId
+          description: TaskList name
+          schema:
+            type: integer
+          in: path
+          required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TaskList'
+              examples:
+                '1':
+                  value:
+                    taskId: 1
+                    userId: 1
+                    taskName: A string
+                    status: A string
+          description: Changed TaskList
+      operationId: PatchTaskList
+      summary: Patch existing TaskList
+    parameters:
+      - name: id
+        description: TaskList id
+        schema:
+          type: integer
+        in: path
+        required: true
+openapi: 3.0.2
+info:
+  title: TaskList
+  version: 0.0.1
+  description: API definition of taskList
+  contact:
+    name: creator's name
+    url: 'http://creator.homepage.address'
+    email: creator@creator.com
+  license:
+    name: MIT License
+    url: 'https://opensource.org/licenses/MIT'
+components:
+  schemas:
+    TaskList:
+      title: Root Type for TaskList
+      description: The root of the TaskList type's schema.
+      type: object
+      properties:
+        taskId:
+          description: taskId of this TaskList
+          type: integer
+        userId:
+          description: userId of this TaskList
+          type: integer
+        taskName:
+          description: taskName of this TaskList
+          type: string
+        status:
+          description: status of this TaskList
+          type: string
+tags:
+  - name: TaskList
+    description: TaskList resource

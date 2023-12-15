@@ -1,0 +1,200 @@
+---
+paths:
+  /chatrooms:
+    summary: Global operations on chatrooms
+    get:
+      tags:
+        - chatrooms
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Chatroom'
+              examples:
+                chatrooms_json:
+                  value:
+                    - chatroomId: 1
+                      messages: value
+                      members: value
+          description: Get list of chatrooms
+      operationId: GetChatroom
+      summary: Get list of chatrooms
+    post:
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Chatroom'
+            examples:
+              '1':
+                value:
+                  chatroomId: 1
+                  messages: value
+                  members: value
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Chatroom'
+              examples:
+                '1':
+                  value:
+                    chatroomId: 1
+                    messages: value
+                    members: value
+          description: Changed Chatroom
+      operationId: Post Chatroom
+      summary: Post Chatroom
+  '/chatrooms/{id}':
+    summary: Specific operation on chatrooms
+    get:
+      parameters:
+        - examples:
+            '1':
+              value: 1
+          name: id
+          description: Chatroom name
+          schema:
+            type: integer
+          in: path
+          required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Chatroom'
+              examples:
+                '1':
+                  value:
+                    chatroomId: 1
+                    messages: value
+                    members: value
+          description: chatrooms with specified id
+      operationId: GetChatroomById
+      summary: Get Chatroom by id
+      description: Get Chatroom by id
+    patch:
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Chatroom'
+            examples:
+              '1':
+                value:
+                  chatroomId: 1
+                  messages: value
+                  members: value
+        required: true
+      parameters:
+        - examples:
+            '1':
+              value: 1
+          name: chatroomId
+          description: Chatroom name
+          schema:
+            type: integer
+          in: path
+          required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Chatroom'
+              examples:
+                '1':
+                  value:
+                    chatroomId: 1
+                    messages: value
+                    members: value
+          description: Changed Chatroom
+      operationId: PatchChatroom
+      summary: Patch existing Chatroom
+    parameters:
+      - name: id
+        description: Chatroom id
+        schema:
+          type: integer
+        in: path
+        required: true
+  '/chatrooms/{id}/':
+    summary: SendMessage operation on chatrooms
+    post:
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                chatroomId:
+                  description: chatroomId of this SendMessage
+                  type: string
+                senderId:
+                  description: senderId of this SendMessage
+                  type: string
+                content:
+                  description: content of this SendMessage
+                  type: string
+            examples: null
+      parameters:
+        - name: id
+          description: SendMessage name
+          schema:
+            type: integer
+          in: path
+          required: true
+          examples: null
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Chatroom'
+              examples:
+                '1':
+                  value:
+                    chatroomId: 1
+                    messages: value
+                    members: value
+          description: SendMessage Operation
+      operationId: SendMessage
+      summary: SendMessage
+      description: SendMessage
+openapi: 3.0.2
+info:
+  title: Chatroom
+  version: 0.0.1
+  description: API definition of chatroom
+  contact:
+    name: creator's name
+    url: 'http://creator.homepage.address'
+    email: creator@creator.com
+  license:
+    name: MIT License
+    url: 'https://opensource.org/licenses/MIT'
+components:
+  schemas:
+    Chatroom:
+      title: Root Type for Chatroom
+      description: The root of the Chatroom type's schema.
+      type: object
+      properties:
+        chatroomId:
+          description: chatroomId of this Chatroom
+          type: integer
+        messages:
+          description: messages of this Chatroom
+          type: string
+        members:
+          description: members of this Chatroom
+          type: string
+tags:
+  - name: Chatroom
+    description: Chatroom resource

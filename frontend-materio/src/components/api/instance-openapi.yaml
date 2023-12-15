@@ -1,0 +1,204 @@
+---
+paths:
+  '/instances/{id}/':
+    post:
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                processId:
+                  description: processId of this CreateInstance
+                  type: string
+            examples: null
+      parameters:
+        - name: id
+          description: CreateInstance name
+          schema:
+            type: integer
+          in: path
+          required: true
+          examples: null
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Instance'
+              examples:
+                '1':
+                  value:
+                    instanceId: 1
+                    processId: 1
+                    status: A string
+                    messages: value
+          description: CreateInstance Operation
+      operationId: CreateInstance
+      summary: CreateInstance
+      description: CreateInstance
+    summary: CompleteInstance operation on instances
+  /instances:
+    summary: Global operations on instances
+    get:
+      tags:
+        - instances
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Instance'
+              examples:
+                instances_json:
+                  value:
+                    - instanceId: 1
+                      processId: 1
+                      status: A string
+                      messages: value
+          description: Get list of instances
+      operationId: GetInstance
+      summary: Get list of instances
+    post:
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Instance'
+            examples:
+              '1':
+                value:
+                  instanceId: 1
+                  processId: 1
+                  status: A string
+                  messages: value
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Instance'
+              examples:
+                '1':
+                  value:
+                    instanceId: 1
+                    processId: 1
+                    status: A string
+                    messages: value
+          description: Changed Instance
+      operationId: Post Instance
+      summary: Post Instance
+  '/instances/{id}':
+    summary: Specific operation on instances
+    get:
+      parameters:
+        - examples:
+            '1':
+              value: 1
+          name: id
+          description: Instance name
+          schema:
+            type: integer
+          in: path
+          required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Instance'
+              examples:
+                '1':
+                  value:
+                    instanceId: 1
+                    processId: 1
+                    status: A string
+                    messages: value
+          description: instances with specified id
+      operationId: GetInstanceById
+      summary: Get Instance by id
+      description: Get Instance by id
+    patch:
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Instance'
+            examples:
+              '1':
+                value:
+                  instanceId: 1
+                  processId: 1
+                  status: A string
+                  messages: value
+        required: true
+      parameters:
+        - examples:
+            '1':
+              value: 1
+          name: instanceId
+          description: Instance name
+          schema:
+            type: integer
+          in: path
+          required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Instance'
+              examples:
+                '1':
+                  value:
+                    instanceId: 1
+                    processId: 1
+                    status: A string
+                    messages: value
+          description: Changed Instance
+      operationId: PatchInstance
+      summary: Patch existing Instance
+    parameters:
+      - name: id
+        description: Instance id
+        schema:
+          type: integer
+        in: path
+        required: true
+openapi: 3.0.2
+info:
+  title: Instance
+  version: 0.0.1
+  description: API definition of instance
+  contact:
+    name: creator's name
+    url: 'http://creator.homepage.address'
+    email: creator@creator.com
+  license:
+    name: MIT License
+    url: 'https://opensource.org/licenses/MIT'
+components:
+  schemas:
+    Instance:
+      title: Root Type for Instance
+      description: The root of the Instance type's schema.
+      type: object
+      properties:
+        instanceId:
+          description: instanceId of this Instance
+          type: integer
+        processId:
+          description: processId of this Instance
+          type: integer
+        status:
+          description: status of this Instance
+          type: string
+        messages:
+          description: messages of this Instance
+          type: string
+tags:
+  - name: Instance
+    description: Instance resource
