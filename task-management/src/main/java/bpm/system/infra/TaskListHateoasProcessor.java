@@ -13,7 +13,9 @@ public class TaskListHateoasProcessor
     @Override
     public EntityModel<TaskList> process(EntityModel<TaskList> model) {
         model.add(
-            Link.of(model.getRequiredLink("self").getHref() + "/").withRel("")
+            Link
+                .of(model.getRequiredLink("self").getHref() + "/completetask")
+                .withRel("completetask")
         );
 
         return model;

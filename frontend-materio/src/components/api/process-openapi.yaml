@@ -1,6 +1,95 @@
 ---
 paths:
+  '/processes/{id}/reviewprocess':
+    summary: ReviewProcess operation on processes
+    put:
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                processId:
+                  description: processId of this ReviewProcess
+                  type: integer
+                reviewResult:
+                  description: reviewResult of this ReviewProcess
+                  type: string
+            examples: null
+      parameters:
+        - name: id
+          description: ReviewProcess name
+          schema:
+            type: integer
+          in: path
+          required: true
+          examples: null
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Process'
+              examples:
+                '1':
+                  value:
+                    processId: 1
+                    processName: A string
+                    bpmnDefinition: A string
+                    messages: value
+          description: ReviewProcess Operation
+      operationId: ReviewProcess
+      summary: ReviewProcess
+      description: ReviewProcess
+  '/processes/{id}/modifyprocess':
+    summary: ModifyProcess operation on processes
+    put:
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                processId:
+                  description: processId of this ModifyProcess
+                  type: integer
+                newProcessName:
+                  description: newProcessName of this ModifyProcess
+                  type: string
+                newTaskList:
+                  description: newTaskList of this ModifyProcess
+                  type: string
+                newPermissions:
+                  description: newPermissions of this ModifyProcess
+                  type: string
+            examples: null
+      parameters:
+        - name: id
+          description: ModifyProcess name
+          schema:
+            type: integer
+          in: path
+          required: true
+          examples: null
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Process'
+              examples:
+                '1':
+                  value:
+                    processId: 1
+                    processName: A string
+                    bpmnDefinition: A string
+                    messages: value
+          description: ModifyProcess Operation
+      operationId: ModifyProcess
+      summary: ModifyProcess
+      description: ModifyProcess
   '/processes/{id}/':
+    summary: CreateProcess operation on processes
     post:
       requestBody:
         content:
@@ -43,7 +132,6 @@ paths:
       operationId: CreateProcess
       summary: CreateProcess
       description: CreateProcess
-    summary: ReviewProcess operation on processes
   /processes:
     summary: Global operations on processes
     get:

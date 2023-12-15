@@ -1,5 +1,42 @@
 ---
 paths:
+  '/chatrooms/{id}/enterchatroom':
+    summary: EnterChatroom operation on chatrooms
+    put:
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                chatroomId:
+                  description: chatroomId of this EnterChatroom
+                  type: integer
+            examples: null
+      parameters:
+        - name: id
+          description: EnterChatroom name
+          schema:
+            type: integer
+          in: path
+          required: true
+          examples: null
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Chatroom'
+              examples:
+                '1':
+                  value:
+                    chatroomId: 1
+                    messages: value
+                    members: value
+          description: EnterChatroom Operation
+      operationId: EnterChatroom
+      summary: EnterChatroom
+      description: EnterChatroom
   /chatrooms:
     summary: Global operations on chatrooms
     get:
@@ -135,7 +172,7 @@ paths:
               properties:
                 chatroomId:
                   description: chatroomId of this SendMessage
-                  type: string
+                  type: integer
                 senderId:
                   description: senderId of this SendMessage
                   type: string

@@ -21,7 +21,7 @@ public class InstanceController {
     InstanceRepository instanceRepository;
 
     @RequestMapping(
-        value = "instances/{id}/",
+        value = "instances/{id}/completeinstance",
         method = RequestMethod.PUT,
         produces = "application/json;charset=UTF-8"
     )

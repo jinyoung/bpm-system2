@@ -11,7 +11,7 @@ import lombok.*;
 @ToString
 public class TaskCompleted extends AbstractEvent {
 
-    private UUID taskId;
+    private Long taskId;
 
     public TaskCompleted(TaskList aggregate) {
         super(aggregate);

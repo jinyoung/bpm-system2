@@ -11,7 +11,7 @@ import lombok.*;
 @ToString
 public class InstanceViewed extends AbstractEvent {
 
-    private UUID instanceId;
+    private Long instanceId;
     private String status;
 
     public InstanceViewed(Instance aggregate) {

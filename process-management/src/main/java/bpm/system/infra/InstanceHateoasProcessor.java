@@ -13,7 +13,12 @@ public class InstanceHateoasProcessor
     @Override
     public EntityModel<Instance> process(EntityModel<Instance> model) {
         model.add(
-            Link.of(model.getRequiredLink("self").getHref() + "/").withRel("")
+            Link
+                .of(
+                    model.getRequiredLink("self").getHref() +
+                    "/completeinstance"
+                )
+                .withRel("completeinstance")
         );
 
         return model;

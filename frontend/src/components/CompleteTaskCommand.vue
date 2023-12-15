@@ -5,7 +5,7 @@
         </v-card-title>
 
         <v-card-text>
-            <UUID offline label="TaskId" v-model="value.taskId" :editMode="editMode" @change="change"/>
+            <Number label="TaskId" v-model="value.taskId" :editMode="editMode"/>
         </v-card-text>
 
         <v-card-actions>
@@ -41,7 +41,7 @@
             value: {},
         }),
         created() {
-            this.value.taskId = {};
+            this.value.taskId = 0;
         },
         watch: {
         },

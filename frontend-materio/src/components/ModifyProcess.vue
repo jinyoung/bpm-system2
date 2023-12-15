@@ -6,7 +6,7 @@
         </v-card-title>
 
         <v-card-text>
-            <UUID offline label="ProcessId" v-model="value.processId" :editMode="editMode" @change="change"/>
+            <Number label="ProcessId" v-model="value.processId" :editMode="editMode"/>
             <String label="NewProcessName" v-model="value.newProcessName" :editMode="editMode"/>
             <TaskList offline label="NewTaskList" v-model="value.newTaskList" :editMode="editMode" @change="change"/>
             <PermissionList offline label="NewPermissions" v-model="value.newPermissions" :editMode="editMode" @change="change"/>
@@ -35,13 +35,13 @@
 </template>
 
 <script>
-import UUID from './UUID.vue'
+import Number from './primitives/Number.vue'
 import String from './primitives/String.vue'
 
 export default {
     name: 'ModifyProcessCommand',
     components:{
-        UUID,
+        Number,
         String,
     },
     props: {},
@@ -50,7 +50,7 @@ export default {
         value: {},
     }),
     created() {
-        this.value.processId = {};
+        this.value.processId = 0;
         this.value.newProcessName = '';
         this.value.newTaskList = [];
         this.value.newPermissions = [];

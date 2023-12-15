@@ -21,7 +21,7 @@ public class TaskListController {
     TaskListRepository taskListRepository;
 
     @RequestMapping(
-        value = "taskLists/{id}/",
+        value = "taskLists/{id}/completetask",
         method = RequestMethod.PUT,
         produces = "application/json;charset=UTF-8"
     )

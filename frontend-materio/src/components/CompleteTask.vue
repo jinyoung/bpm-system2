@@ -6,7 +6,7 @@
         </v-card-title>
 
         <v-card-text>
-            <UUID offline label="TaskId" v-model="value.taskId" :editMode="editMode" @change="change"/>
+            <Number label="TaskId" v-model="value.taskId" :editMode="editMode"/>
         </v-card-text>
 
         <v-card-actions>
@@ -32,12 +32,12 @@
 </template>
 
 <script>
-import UUID from './UUID.vue'
+import Number from './primitives/Number.vue'
 
 export default {
     name: 'CompleteTaskCommand',
     components:{
-        UUID,
+        Number,
     },
     props: {},
     data: () => ({
@@ -45,7 +45,7 @@ export default {
         value: {},
     }),
     created() {
-        this.value.taskId = {};
+        this.value.taskId = 0;
     },
     watch: {
     },

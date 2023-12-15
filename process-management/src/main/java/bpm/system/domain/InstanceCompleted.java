@@ -11,7 +11,7 @@ import lombok.*;
 @ToString
 public class InstanceCompleted extends AbstractEvent {
 
-    private UUID instanceId;
+    private Long instanceId;
 
     public InstanceCompleted(Instance aggregate) {
         super(aggregate);

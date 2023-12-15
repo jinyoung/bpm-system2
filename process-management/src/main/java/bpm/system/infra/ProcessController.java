@@ -21,7 +21,7 @@ public class ProcessController {
     ProcessRepository processRepository;
 
     @RequestMapping(
-        value = "processes/{id}/",
+        value = "processes/{id}/modifyprocess",
         method = RequestMethod.PUT,
         produces = "application/json;charset=UTF-8"
     )
@@ -43,7 +43,7 @@ public class ProcessController {
     }
 
     @RequestMapping(
-        value = "processes/{id}/",
+        value = "processes/{id}/reviewprocess",
         method = RequestMethod.PUT,
         produces = "application/json;charset=UTF-8"
     )

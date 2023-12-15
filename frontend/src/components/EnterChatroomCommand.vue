@@ -5,7 +5,7 @@
         </v-card-title>
 
         <v-card-text>
-            <UUID offline label="ChatroomId" v-model="value.chatroomId" :editMode="editMode" @change="change"/>
+            <Number label="ChatroomId" v-model="value.chatroomId" :editMode="editMode"/>
         </v-card-text>
 
         <v-card-actions>
@@ -41,7 +41,7 @@
             value: {},
         }),
         created() {
-            this.value.chatroomId = {};
+            this.value.chatroomId = 0;
         },
         watch: {
         },

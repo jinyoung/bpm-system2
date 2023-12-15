@@ -21,7 +21,7 @@ public class ChatroomController {
     ChatroomRepository chatroomRepository;
 
     @RequestMapping(
-        value = "chatrooms/{id}/",
+        value = "chatrooms/{id}/enterchatroom",
         method = RequestMethod.PUT,
         produces = "application/json;charset=UTF-8"
     )
@@ -38,6 +38,22 @@ public class ChatroomController {
         Chatroom chatroom = optionalChatroom.get();
         chatroom.enterChatroom(enterChatroomCommand);
 
+        chatroomRepository.save(chatroom);
+        return chatroom;
+    }
+
+    @RequestMapping(
+        value = "chatrooms/",
+        method = RequestMethod.POST,
+        produces = "application/json;charset=UTF-8"
+    )
+    public Chatroom sendMessage(
+        HttpServletRequest request,
+        HttpServletResponse response,
+        @RequestBody Chatroom chatroom
+    ) throws Exception {
+        System.out.println("##### /chatroom/sendMessage  called #####");
+        chatroom.sendMessage(sendMessagecommand);
         chatroomRepository.save(chatroom);
         return chatroom;
     }

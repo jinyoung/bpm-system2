@@ -1,6 +1,45 @@
 ---
 paths:
-  '/taskLists/{id}/':
+  '/taskLists/{id}/completetask':
+    summary: CompleteTask operation on taskLists
+    put:
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                taskId:
+                  description: taskId of this CompleteTask
+                  type: integer
+            examples: null
+      parameters:
+        - name: id
+          description: CompleteTask name
+          schema:
+            type: integer
+          in: path
+          required: true
+          examples: null
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TaskList'
+              examples:
+                '1':
+                  value:
+                    taskId: 1
+                    userId: 1
+                    taskName: A string
+                    status: A string
+          description: CompleteTask Operation
+      operationId: CompleteTask
+      summary: CompleteTask
+      description: CompleteTask
+  '/taskLists/{id}/querytasklist':
+    summary: QueryTaskList operation on taskLists
     get:
       requestBody:
         content:
@@ -10,7 +49,7 @@ paths:
               properties:
                 userId:
                   description: userId of this QueryTaskList
-                  type: string
+                  type: integer
             examples: null
       parameters:
         - name: id
@@ -37,7 +76,6 @@ paths:
       operationId: QueryTaskList
       summary: QueryTaskList
       description: QueryTaskList
-    summary: CompleteTask operation on taskLists
   /taskLists:
     summary: Global operations on taskLists
     get:

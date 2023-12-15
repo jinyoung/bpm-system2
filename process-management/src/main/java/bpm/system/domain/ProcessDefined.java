@@ -11,7 +11,7 @@ import lombok.*;
 @ToString
 public class ProcessDefined extends AbstractEvent {
 
-    private UUID processId;
+    private Long processId;
     private String processName;
     private List<Task> taskList;
     private List<Permission> permissions;

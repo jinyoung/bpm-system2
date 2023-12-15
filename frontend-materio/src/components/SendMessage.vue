@@ -6,7 +6,7 @@
         </v-card-title>
 
         <v-card-text>
-            <UUID offline label="ChatroomId" v-model="value.chatroomId" :editMode="editMode" @change="change"/>
+            <Number label="ChatroomId" v-model="value.chatroomId" :editMode="editMode"/>
             <UUID offline label="SenderId" v-model="value.senderId" :editMode="editMode" @change="change"/>
             <String label="Content" v-model="value.content" :editMode="editMode"/>
         </v-card-text>
@@ -34,11 +34,13 @@
 </template>
 
 <script>
+import Number from './primitives/Number.vue'
 import String from './primitives/String.vue'
 
 export default {
     name: 'SendMessageCommand',
     components:{
+        Number,
         String,
     },
     props: {},
@@ -47,7 +49,7 @@ export default {
         value: {},
     }),
     created() {
-        this.value.chatroomId = {};
+        this.value.chatroomId = 0;
         this.value.senderId = {};
         this.value.content = '';
     },
