@@ -3,7 +3,6 @@
 </template>
 
 <script>
-import axios from 'axios'
 import BaseRepository from '../repository/BaseRepository'
 import axios from '@axios'
 

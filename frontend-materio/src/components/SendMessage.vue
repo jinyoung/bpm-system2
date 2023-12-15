@@ -34,15 +34,11 @@
 </template>
 
 <script>
-import UUID from './UUID.vue'
-import UUID from './UUID.vue'
 import String from './primitives/String.vue'
 
 export default {
     name: 'SendMessageCommand',
     components:{
-        UUID,
-        UUID,
         String,
     },
     props: {},
