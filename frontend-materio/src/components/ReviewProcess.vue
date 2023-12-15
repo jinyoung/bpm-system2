@@ -6,7 +6,7 @@
         </v-card-title>
 
         <v-card-text>
-            <UUID offline label="ProcessId" v-model="value.processId" :editMode="editMode" @change="change"/>
+            <Number label="ProcessId" v-model="value.processId" :editMode="editMode"/>
             <String label="ReviewResult" v-model="value.reviewResult" :editMode="editMode"/>
         </v-card-text>
 
@@ -33,13 +33,13 @@
 </template>
 
 <script>
-import UUID from './UUID.vue'
+import Number from './primitives/Number.vue'
 import String from './primitives/String.vue'
 
 export default {
     name: 'ReviewProcessCommand',
     components:{
-        UUID,
+        Number,
         String,
     },
     props: {},
@@ -48,7 +48,7 @@ export default {
         value: {},
     }),
     created() {
-        this.value.processId = {};
+        this.value.processId = 0;
         this.value.reviewResult = '';
     },
     watch: {

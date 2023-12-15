@@ -5,7 +5,7 @@
         </v-card-title>
 
         <v-card-text>
-            <UUID offline label="UserId" v-model="value.userId" :editMode="editMode" @change="change"/>
+            <Number label="UserId" v-model="value.userId" :editMode="editMode"/>
         </v-card-text>
 
         <v-card-actions>
@@ -41,7 +41,7 @@
             value: {},
         }),
         created() {
-            this.value.userId = {};
+            this.value.userId = 0;
         },
         watch: {
         },

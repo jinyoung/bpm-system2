@@ -5,7 +5,7 @@
         </v-card-title>
 
         <v-card-text>
-            <UUID offline label="ProcessId" v-model="value.processId" :editMode="editMode" @change="change"/>
+            <Number label="ProcessId" v-model="value.processId" :editMode="editMode"/>
             <String label="ReviewResult" v-model="value.reviewResult" :editMode="editMode"/>
         </v-card-text>
 
@@ -42,7 +42,7 @@
             value: {},
         }),
         created() {
-            this.value.processId = {};
+            this.value.processId = 0;
             this.value.reviewResult = '';
         },
         watch: {

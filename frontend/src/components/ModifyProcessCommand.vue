@@ -5,7 +5,7 @@
         </v-card-title>
 
         <v-card-text>
-            <UUID offline label="ProcessId" v-model="value.processId" :editMode="editMode" @change="change"/>
+            <Number label="ProcessId" v-model="value.processId" :editMode="editMode"/>
             <String label="NewProcessName" v-model="value.newProcessName" :editMode="editMode"/>
             <List&lt;Task&gt; offline label="NewTaskList" v-model="value.newTaskList" :editMode="editMode" @change="change"/>
             <TaskList offline label="NewTaskList" v-model="value.newTaskList" :editMode="editMode" @change="change"/>
@@ -46,7 +46,7 @@
             value: {},
         }),
         created() {
-            this.value.processId = {};
+            this.value.processId = 0;
             this.value.newProcessName = '';
             this.value.newTaskList = [];
             this.value.newPermissions = [];

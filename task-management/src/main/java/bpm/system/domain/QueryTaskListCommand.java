@@ -7,5 +7,5 @@ import lombok.Data;
 @Data
 public class QueryTaskListCommand {
 
-    private UUID userId;
+    private Long userId;
 }

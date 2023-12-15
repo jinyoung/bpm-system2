@@ -7,5 +7,5 @@ import lombok.Data;
 @Data
 public class CompleteTaskCommand {
 
-    private UUID taskId;
+    private Long taskId;
 }

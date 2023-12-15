@@ -7,6 +7,6 @@ import lombok.Data;
 @Data
 public class ReviewProcessCommand {
 
-    private UUID processId;
+    private Long processId;
     private String reviewResult;
 }

@@ -44,13 +44,6 @@
                 <v-btn
                     color="primary"
                     text
-                    @click="save"
-                >
-                    메시지 전송
-                </v-btn>
-                <v-btn
-                    color="primary"
-                    text
                     @click="remove"
                     v-if="!editMode"
                 >
@@ -81,6 +74,20 @@
                     @closeDialog="closeEnterChatroom"
                     @enterChatroom="enterChatroom"
                 ></EnterChatroomCommand>
+            </v-dialog>
+            <v-btn
+                v-if="!editMode"
+                color="primary"
+                text
+                @click="openSendMessage"
+            >
+                SendMessage
+            </v-btn>
+            <v-dialog v-model="sendMessageDiagram" width="500">
+                <SendMessageCommand
+                    @closeDialog="closeSendMessage"
+                    @sendMessage="sendMessage"
+                ></SendMessageCommand>
             </v-dialog>
         </v-card-actions>
 
@@ -120,6 +127,7 @@
                 text: '',
             },
             enterChatroomDiagram: false,
+            sendMessageDiagram: false,
         }),
 	async created() {
         },
@@ -220,7 +228,7 @@
             async enterChatroom(params) {
                 try {
                     if(!this.offline) {
-                        var temp = await axios.put(axios.fixUrl(this.value._links[''].href), params)
+                        var temp = await axios.put(axios.fixUrl(this.value._links['enterchatroom'].href), params)
                         for(var k in temp.data) {
                             this.value[k]=temp.data[k];
                         }
@@ -242,6 +250,27 @@
             },
             closeEnterChatroom() {
                 this.enterChatroomDiagram = false;
+            },
+            async sendMessage() {
+                try {
+                    if(!this.offline){
+                        var temp = await axios.post(axios.fixUrl(this.value._links[''].href))
+                        for(var k in temp.data) this.value[k]=temp.data[k];
+                    }
+
+                    this.editMode = false;
+                    
+                    this.$emit('input', this.value);
+                    this.$emit('delete', this.value);
+                
+                } catch(e) {
+                    this.snackbar.status = true
+                    if(e.response && e.response.data.message) {
+                        this.snackbar.text = e.response.data.message
+                    } else {
+                        this.snackbar.text = e
+                    }
+                }
             },
         },
     }

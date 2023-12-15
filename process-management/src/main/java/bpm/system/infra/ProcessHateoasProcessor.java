@@ -13,10 +13,14 @@ public class ProcessHateoasProcessor
     @Override
     public EntityModel<Process> process(EntityModel<Process> model) {
         model.add(
-            Link.of(model.getRequiredLink("self").getHref() + "/").withRel("")
+            Link
+                .of(model.getRequiredLink("self").getHref() + "/modifyprocess")
+                .withRel("modifyprocess")
         );
         model.add(
-            Link.of(model.getRequiredLink("self").getHref() + "/").withRel("")
+            Link
+                .of(model.getRequiredLink("self").getHref() + "/reviewprocess")
+                .withRel("reviewprocess")
         );
 
         return model;

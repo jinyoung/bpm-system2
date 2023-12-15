@@ -6,7 +6,7 @@
         </v-card-title>
 
         <v-card-text>
-            <UUID offline label="ChatroomId" v-model="value.chatroomId" :editMode="editMode" @change="change"/>
+            <Number label="ChatroomId" v-model="value.chatroomId" :editMode="editMode"/>
         </v-card-text>
 
         <v-card-actions>
@@ -32,12 +32,12 @@
 </template>
 
 <script>
-import UUID from './UUID.vue'
+import Number from './primitives/Number.vue'
 
 export default {
     name: 'EnterChatroomCommand',
     components:{
-        UUID,
+        Number,
     },
     props: {},
     data: () => ({
@@ -45,7 +45,7 @@ export default {
         value: {},
     }),
     created() {
-        this.value.chatroomId = {};
+        this.value.chatroomId = 0;
     },
     watch: {
     },

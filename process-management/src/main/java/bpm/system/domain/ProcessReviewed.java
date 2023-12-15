@@ -11,7 +11,7 @@ import lombok.*;
 @ToString
 public class ProcessReviewed extends AbstractEvent {
 
-    private UUID processId;
+    private Long processId;
     private String reviewResult;
 
     public ProcessReviewed(Process aggregate) {

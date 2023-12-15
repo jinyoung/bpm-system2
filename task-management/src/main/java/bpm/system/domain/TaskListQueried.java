@@ -11,7 +11,7 @@ import lombok.*;
 @ToString
 public class TaskListQueried extends AbstractEvent {
 
-    private UUID taskId;
+    private Long taskId;
     private String taskName;
     private String status;
 

@@ -27,6 +27,15 @@
                         @enterChatroom="enterChatroom"
                     ></EnterChatroom>
                 </v-dialog>
+                <v-btn style="margin-left: 5px;" @click="sendMessageDialog = true" class="contrast-primary-text" small color="primary" :disabled="!hasRole('User')">
+                    <v-icon small>mdi-minus-circle-outline</v-icon>메시지 전송
+                </v-btn>
+                <v-dialog v-model="sendMessageDialog" width="500">
+                    <SendMessage
+                        @closeDialog="sendMessageDialog = false"
+                        @sendMessage="sendMessage"
+                    ></SendMessage>
+                </v-dialog>
             </div>
             <div class="mb-5 text-lg font-bold"></div>
             <div class="table-responsive">
@@ -131,6 +140,7 @@ import Chatroom from '../Chatroom.vue'
 import MessageDetailGrid from './MessageDetailGrid.vue'
 import MemberDetailGrid from './MemberDetailGrid.vue'
 import EnterChatroom from '../EnterChatroom.vue'
+import SendMessage from '../SendMessage.vue'
 
 export default {
     name: 'chatroomGrid',
@@ -141,10 +151,12 @@ export default {
         MessageDetailGrid,
         MemberDetailGrid,
         EnterChatroom,
+        SendMessage,
     },
     data: () => ({
         path: 'chatrooms',
         enterChatroomDialog: false,
+        sendMessageDialog: false,
     }),
     watch: {
     },
@@ -154,6 +166,16 @@ export default {
                 this.repository.invoke(this.getSelectedItem(), "enterChatroom", params)
                 this.$EventBus.$emit('show-success','EnterChatroom 성공적으로 처리되었습니다.')
                 this.enterChatroomDialog = false
+            }catch(e){
+                console.log(e)
+            }
+            
+        },
+        sendMessage(params){
+            try{
+                this.repository.invoke(this.getSelectedItem(), "sendMessage", params)
+                this.$EventBus.$emit('show-success','SendMessage 성공적으로 처리되었습니다.')
+                this.sendMessageDialog = false
             }catch(e){
                 console.log(e)
             }

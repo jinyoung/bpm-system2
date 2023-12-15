@@ -13,6 +13,11 @@ public class ChatroomHateoasProcessor
     @Override
     public EntityModel<Chatroom> process(EntityModel<Chatroom> model) {
         model.add(
+            Link
+                .of(model.getRequiredLink("self").getHref() + "/enterchatroom")
+                .withRel("enterchatroom")
+        );
+        model.add(
             Link.of(model.getRequiredLink("self").getHref() + "/").withRel("")
         );
 

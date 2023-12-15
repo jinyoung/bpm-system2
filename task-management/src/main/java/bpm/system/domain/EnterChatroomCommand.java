@@ -7,5 +7,5 @@ import lombok.Data;
 @Data
 public class EnterChatroomCommand {
 
-    private UUID chatroomId;
+    private Long chatroomId;
 }

@@ -7,7 +7,7 @@ import lombok.Data;
 @Data
 public class SendMessageCommand {
 
-    private UUID chatroomId;
+    private Long chatroomId;
     private UUID senderId;
     private String content;
 }

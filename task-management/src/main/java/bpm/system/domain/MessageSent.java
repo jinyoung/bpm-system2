@@ -11,8 +11,8 @@ import lombok.*;
 @ToString
 public class MessageSent extends AbstractEvent {
 
-    private UUID chatroomId;
-    private UUID senderId;
+    private Long chatroomId;
+    private Long senderId;
     private String content;
 
     public MessageSent(Chatroom aggregate) {

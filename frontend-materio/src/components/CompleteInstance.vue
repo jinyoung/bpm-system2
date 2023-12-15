@@ -6,7 +6,7 @@
         </v-card-title>
 
         <v-card-text>
-            <UUID offline label="InstanceId" v-model="value.instanceId" :editMode="editMode" @change="change"/>
+            <Number label="InstanceId" v-model="value.instanceId" :editMode="editMode"/>
         </v-card-text>
 
         <v-card-actions>
@@ -32,12 +32,12 @@
 </template>
 
 <script>
-import UUID from './UUID.vue'
+import Number from './primitives/Number.vue'
 
 export default {
     name: 'CompleteInstanceCommand',
     components:{
-        UUID,
+        Number,
     },
     props: {},
     data: () => ({
@@ -45,7 +45,7 @@ export default {
         value: {},
     }),
     created() {
-        this.value.instanceId = {};
+        this.value.instanceId = 0;
     },
     watch: {
     },

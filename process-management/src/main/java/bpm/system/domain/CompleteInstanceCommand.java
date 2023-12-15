@@ -7,5 +7,5 @@ import lombok.Data;
 @Data
 public class CompleteInstanceCommand {
 
-    private UUID instanceId;
+    private Long instanceId;
 }

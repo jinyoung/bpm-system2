@@ -2,7 +2,6 @@ package bpm.system.domain;
 
 import bpm.system.TaskManagementApplication;
 import bpm.system.domain.ChatroomCreated;
-import bpm.system.domain.MessageSent;
 import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
@@ -29,9 +28,6 @@ public class Chatroom {
     public void onPostPersist() {
         ChatroomCreated chatroomCreated = new ChatroomCreated(this);
         chatroomCreated.publishAfterCommit();
-
-        MessageSent messageSent = new MessageSent(this);
-        messageSent.publishAfterCommit();
     }
 
     @PrePersist
@@ -50,6 +46,15 @@ public class Chatroom {
 
         ChatroomEntered chatroomEntered = new ChatroomEntered(this);
         chatroomEntered.publishAfterCommit();
+    }
+
+    //>>> Clean Arch / Port Method
+    //<<< Clean Arch / Port Method
+    public void sendMessage(SendMessageCommand sendMessageCommand) {
+        //implement business logic here:
+
+        MessageSent messageSent = new MessageSent(this);
+        messageSent.publishAfterCommit();
     }
     //>>> Clean Arch / Port Method
 

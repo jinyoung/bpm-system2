@@ -11,7 +11,7 @@ import lombok.*;
 @ToString
 public class ChatroomEntered extends AbstractEvent {
 
-    private UUID chatroomId;
+    private Long chatroomId;
 
     public ChatroomEntered(Chatroom aggregate) {
         super(aggregate);

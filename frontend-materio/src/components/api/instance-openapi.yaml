@@ -1,5 +1,43 @@
 ---
 paths:
+  '/instances/{id}/completeinstance':
+    summary: CompleteInstance operation on instances
+    put:
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                instanceId:
+                  description: instanceId of this CompleteInstance
+                  type: integer
+            examples: null
+      parameters:
+        - name: id
+          description: CompleteInstance name
+          schema:
+            type: integer
+          in: path
+          required: true
+          examples: null
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Instance'
+              examples:
+                '1':
+                  value:
+                    instanceId: 1
+                    processId: 1
+                    status: A string
+                    messages: value
+          description: CompleteInstance Operation
+      operationId: CompleteInstance
+      summary: CompleteInstance
+      description: CompleteInstance
   '/instances/{id}/':
     post:
       requestBody:
@@ -37,7 +75,7 @@ paths:
       operationId: CreateInstance
       summary: CreateInstance
       description: CreateInstance
-    summary: CompleteInstance operation on instances
+    summary: ViewInstance operation on instances
   /instances:
     summary: Global operations on instances
     get:

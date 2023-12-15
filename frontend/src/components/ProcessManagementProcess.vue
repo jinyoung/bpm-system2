@@ -228,7 +228,7 @@
             async modifyProcess(params) {
                 try {
                     if(!this.offline) {
-                        var temp = await axios.put(axios.fixUrl(this.value._links[''].href), params)
+                        var temp = await axios.put(axios.fixUrl(this.value._links['modifyprocess'].href), params)
                         for(var k in temp.data) {
                             this.value[k]=temp.data[k];
                         }
@@ -254,7 +254,7 @@
             async reviewProcess(params) {
                 try {
                     if(!this.offline) {
-                        var temp = await axios.put(axios.fixUrl(this.value._links[''].href), params)
+                        var temp = await axios.put(axios.fixUrl(this.value._links['reviewprocess'].href), params)
                         for(var k in temp.data) {
                             this.value[k]=temp.data[k];
                         }
