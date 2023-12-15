@@ -14,7 +14,7 @@ public class ProcessReviewed extends AbstractEvent {
     private Long processId;
     private String reviewResult;
 
-    public ProcessReviewed(Process aggregate) {
+    public ProcessReviewed(ProcessDefinition aggregate) {
         super(aggregate);
     }
 

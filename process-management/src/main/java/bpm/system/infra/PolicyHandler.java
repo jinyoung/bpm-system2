@@ -18,7 +18,7 @@ import org.springframework.stereotype.Service;
 public class PolicyHandler {
 
     @Autowired
-    ProcessRepository processRepository;
+    ProcessDefinitionRepository processDefinitionRepository;
 
     @Autowired
     InstanceRepository instanceRepository;

@@ -48,7 +48,7 @@
                             <td class="whitespace-nowrap" label="태스크명">{{ val.taskName }}</td>
                             <td class="whitespace-nowrap" label="상태">{{ val.status }}</td>
                             <td class="whitespace-nowrap" label="프로세스">
-                                <ProcessId :editMode="editMode" v-model="val.processId"></ProcessId>
+                                <ProcessDefinitionId :editMode="editMode" v-model="val.processDefinitionId"></ProcessDefinitionId>
                             </td>
                             <td class="whitespace-nowrap" label="프로세스 인스턴스">
                                 <InstanceId :editMode="editMode" v-model="val.instanceId"></InstanceId>

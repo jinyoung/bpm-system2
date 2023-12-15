@@ -8,8 +8,8 @@ const router = createRouter({
       component: () => import('../components/pages/Index.vue'),
     },
     {
-      path: '/processes',
-      component: () => import('../components/ui/ProcessGrid.vue'),
+      path: '/processDefinitions',
+      component: () => import('../components/ui/ProcessDefinitionGrid.vue'),
     },
     {
       path: '/instances',

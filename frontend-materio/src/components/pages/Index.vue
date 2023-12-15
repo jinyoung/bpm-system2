@@ -34,7 +34,7 @@ export default {
     cards: [
       {
           text: "프로세스",
-          link: "/processes",
+          link: "/processDefinitions",
       },
       {
           text: "프로세스 인스턴스",

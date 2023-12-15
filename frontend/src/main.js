@@ -45,7 +45,7 @@ templateFiles.keys().forEach(function(tempFiles) {
 Vue.use(Managing);
 const pluralCaseList = []
 
-pluralCaseList.push( {plural: "processManagements/processes", pascal: "ProcessManagementProcess"} )
+pluralCaseList.push( {plural: "processManagements/processDefinitions", pascal: "ProcessManagementProcessDefinition"} )
 pluralCaseList.push( {plural: "processManagements/instances", pascal: "ProcessManagementInstance"} )
 
 pluralCaseList.push( {plural: "taskManagements/taskLists", pascal: "TaskManagementTaskList"} )
