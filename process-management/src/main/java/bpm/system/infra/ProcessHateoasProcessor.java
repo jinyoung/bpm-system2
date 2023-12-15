@@ -16,14 +16,7 @@ public class ProcessHateoasProcessor
             Link.of(model.getRequiredLink("self").getHref() + "/").withRel("")
         );
         model.add(
-            Link
-                .of(model.getRequiredLink("self").getHref() + "/modifyprocess")
-                .withRel("modifyprocess")
-        );
-        model.add(
-            Link
-                .of(model.getRequiredLink("self").getHref() + "/reviewprocess")
-                .withRel("reviewprocess")
+            Link.of(model.getRequiredLink("self").getHref() + "/").withRel("")
         );
 
         return model;

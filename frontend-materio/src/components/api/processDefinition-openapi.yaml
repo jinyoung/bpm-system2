@@ -1,0 +1,286 @@
+---
+paths:
+  '/processDefinitions/{id}/reviewprocess':
+    summary: ReviewProcess operation on processDefinitions
+    put:
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                processId:
+                  description: processId of this ReviewProcess
+                  type: integer
+                reviewResult:
+                  description: reviewResult of this ReviewProcess
+                  type: string
+            examples: null
+      parameters:
+        - name: id
+          description: ReviewProcess name
+          schema:
+            type: integer
+          in: path
+          required: true
+          examples: null
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProcessDefinition'
+              examples:
+                '1':
+                  value:
+                    processId: 1
+                    processName: A string
+                    bpmnDefinition: A string
+                    messages: value
+          description: ReviewProcess Operation
+      operationId: ReviewProcess
+      summary: ReviewProcess
+      description: ReviewProcess
+  '/processDefinitions/{id}/modifyprocess':
+    summary: ModifyProcess operation on processDefinitions
+    put:
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                processId:
+                  description: processId of this ModifyProcess
+                  type: integer
+                newProcessName:
+                  description: newProcessName of this ModifyProcess
+                  type: string
+            examples: null
+      parameters:
+        - name: id
+          description: ModifyProcess name
+          schema:
+            type: integer
+          in: path
+          required: true
+          examples: null
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProcessDefinition'
+              examples:
+                '1':
+                  value:
+                    processId: 1
+                    processName: A string
+                    bpmnDefinition: A string
+                    messages: value
+          description: ModifyProcess Operation
+      operationId: ModifyProcess
+      summary: ModifyProcess
+      description: ModifyProcess
+  '/processDefinitions/{id}/':
+    summary: CreateProcess operation on processDefinitions
+    post:
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                processName:
+                  description: processName of this CreateProcess
+                  type: string
+            examples: null
+      parameters:
+        - name: id
+          description: CreateProcess name
+          schema:
+            type: integer
+          in: path
+          required: true
+          examples: null
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProcessDefinition'
+              examples:
+                '1':
+                  value:
+                    processId: 1
+                    processName: A string
+                    bpmnDefinition: A string
+                    messages: value
+          description: CreateProcess Operation
+      operationId: CreateProcess
+      summary: CreateProcess
+      description: CreateProcess
+  /processDefinitions:
+    summary: Global operations on processDefinitions
+    get:
+      tags:
+        - processDefinitions
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ProcessDefinition'
+              examples:
+                processDefinitions_json:
+                  value:
+                    - processId: 1
+                      processName: A string
+                      bpmnDefinition: A string
+                      messages: value
+          description: Get list of processDefinitions
+      operationId: GetProcessDefinition
+      summary: Get list of processDefinitions
+    post:
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProcessDefinition'
+            examples:
+              '1':
+                value:
+                  processId: 1
+                  processName: A string
+                  bpmnDefinition: A string
+                  messages: value
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProcessDefinition'
+              examples:
+                '1':
+                  value:
+                    processId: 1
+                    processName: A string
+                    bpmnDefinition: A string
+                    messages: value
+          description: Changed ProcessDefinition
+      operationId: Post ProcessDefinition
+      summary: Post ProcessDefinition
+  '/processDefinitions/{id}':
+    summary: Specific operation on processDefinitions
+    get:
+      parameters:
+        - examples:
+            '1':
+              value: 1
+          name: id
+          description: ProcessDefinition name
+          schema:
+            type: integer
+          in: path
+          required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProcessDefinition'
+              examples:
+                '1':
+                  value:
+                    processId: 1
+                    processName: A string
+                    bpmnDefinition: A string
+                    messages: value
+          description: processDefinitions with specified id
+      operationId: GetProcessDefinitionById
+      summary: Get ProcessDefinition by id
+      description: Get ProcessDefinition by id
+    patch:
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProcessDefinition'
+            examples:
+              '1':
+                value:
+                  processId: 1
+                  processName: A string
+                  bpmnDefinition: A string
+                  messages: value
+        required: true
+      parameters:
+        - examples:
+            '1':
+              value: 1
+          name: processId
+          description: ProcessDefinition name
+          schema:
+            type: integer
+          in: path
+          required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProcessDefinition'
+              examples:
+                '1':
+                  value:
+                    processId: 1
+                    processName: A string
+                    bpmnDefinition: A string
+                    messages: value
+          description: Changed ProcessDefinition
+      operationId: PatchProcessDefinition
+      summary: Patch existing ProcessDefinition
+    parameters:
+      - name: id
+        description: ProcessDefinition id
+        schema:
+          type: integer
+        in: path
+        required: true
+openapi: 3.0.2
+info:
+  title: ProcessDefinition
+  version: 0.0.1
+  description: API definition of processDefinition
+  contact:
+    name: creator's name
+    url: 'http://creator.homepage.address'
+    email: creator@creator.com
+  license:
+    name: MIT License
+    url: 'https://opensource.org/licenses/MIT'
+components:
+  schemas:
+    ProcessDefinition:
+      title: Root Type for ProcessDefinition
+      description: The root of the ProcessDefinition type's schema.
+      type: object
+      properties:
+        processId:
+          description: processId of this ProcessDefinition
+          type: integer
+        processName:
+          description: processName of this ProcessDefinition
+          type: string
+        bpmnDefinition:
+          description: bpmnDefinition of this ProcessDefinition
+          type: string
+        messages:
+          description: messages of this ProcessDefinition
+          type: string
+tags:
+  - name: ProcessDefinition
+    description: ProcessDefinition resource

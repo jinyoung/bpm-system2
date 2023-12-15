@@ -14,7 +14,7 @@ public class ProcessDefined extends AbstractEvent {
     private Long processId;
     private String processName;
 
-    public ProcessDefined(Process aggregate) {
+    public ProcessDefined(ProcessDefinition aggregate) {
         super(aggregate);
     }
 

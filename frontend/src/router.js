@@ -5,8 +5,8 @@ import Router from 'vue-router'
 Vue.use(Router);
 
 
-import ProcessManagementProcessManager from "./components/listers/ProcessManagementProcessCards"
-import ProcessManagementProcessDetail from "./components/listers/ProcessManagementProcessDetail"
+import ProcessManagementProcessDefinitionManager from "./components/listers/ProcessManagementProcessDefinitionCards"
+import ProcessManagementProcessDefinitionDetail from "./components/listers/ProcessManagementProcessDefinitionDetail"
 import ProcessManagementInstanceManager from "./components/listers/ProcessManagementInstanceCards"
 import ProcessManagementInstanceDetail from "./components/listers/ProcessManagementInstanceDetail"
 
@@ -21,14 +21,14 @@ export default new Router({
     base: process.env.BASE_URL,
     routes: [
             {
-                path: '/processManagements/processes',
-                name: 'ProcessManagementProcessManager',
-                component: ProcessManagementProcessManager
+                path: '/processManagements/processDefinitions',
+                name: 'ProcessManagementProcessDefinitionManager',
+                component: ProcessManagementProcessDefinitionManager
             },
             {
-                path: '/processManagements/processes/:id',
-                name: 'ProcessManagementProcessDetail',
-                component: ProcessManagementProcessDetail
+                path: '/processManagements/processDefinitions/:id',
+                name: 'ProcessManagementProcessDefinitionDetail',
+                component: ProcessManagementProcessDefinitionDetail
             },
             {
                 path: '/processManagements/instances',

@@ -11,7 +11,7 @@ import {
         <VerticalNavLink
             :item="{
                 title: '프로세스',
-                to: '/processes',
+                to: '/processDefinitions',
             }"
         />
         <VerticalNavLink

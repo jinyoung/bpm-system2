@@ -33,7 +33,7 @@ mvn spring-boot:run
 ## Test by API
 - process-management
 ```
- http :8088/processes processId="processId" processName="processName" bpmnDefinition="bpmnDefinition" messages="messages" 
+ http :8088/processDefinitions processId="processId" processName="processName" bpmnDefinition="bpmnDefinition" messages="messages" 
  http :8088/instances instanceId="instanceId" processId="processId" status="status" messages="messages" 
 ```
 - task-management

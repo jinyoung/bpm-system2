@@ -36,8 +36,8 @@
                 <v-list>
                     <v-list-item
                         class="px-2"
-                        key="processes"
-                        to="/processManagements/processes"
+                        key="processDefinitions"
+                        to="/processManagements/processDefinitions"
                         @click="changeUrl()"
                         color="primary"
                         style="font-weight:700;"
@@ -161,8 +161,8 @@ export default {
             { 
                 title: '프로세스', 
                 description: '프로세스 정의와 관리를 담당하는 집계입니다.', 
-                key: 'processes', 
-                route: '/processManagements/processes',
+                key: 'processDefinitions', 
+                route: '/processManagements/processDefinitions',
                 ImageUrl: '',
             },
             { 

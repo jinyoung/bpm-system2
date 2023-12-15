@@ -14,7 +14,7 @@ public class ProcessModified extends AbstractEvent {
     private Long processId;
     private String newProcessName;
 
-    public ProcessModified(Process aggregate) {
+    public ProcessModified(ProcessDefinition aggregate) {
         super(aggregate);
     }
 

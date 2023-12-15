@@ -18,6 +18,15 @@
                 <v-btn style="margin-left: 5px;" @click="openEditDialog()" class="contrast-primary-text" small color="primary">
                     <v-icon small>mdi-pencil</v-icon>수정
                 </v-btn>
+                <v-btn style="margin-left: 5px;" @click="createProcessDialog = true" class="contrast-primary-text" small color="primary" :disabled="!hasRole('Administrator')">
+                    <v-icon small>mdi-minus-circle-outline</v-icon>프로세스 생성
+                </v-btn>
+                <v-dialog v-model="createProcessDialog" width="500">
+                    <CreateProcess
+                        @closeDialog="createProcessDialog = false"
+                        @createProcess="createProcess"
+                    ></CreateProcess>
+                </v-dialog>
                 <v-btn style="margin-left: 5px;" @click="modifyProcessDialog = true" class="contrast-primary-text" small color="primary" :disabled="!hasRole('Administrator')">
                     <v-icon small>mdi-minus-circle-outline</v-icon>프로세스 수정
                 </v-btn>
@@ -72,7 +81,7 @@
                         class="elevation-0"
                         height="50px"
                     >
-                        <div style="color:white; font-size:17px; font-weight:700;">Process 등록</div>
+                        <div style="color:white; font-size:17px; font-weight:700;">ProcessDefinition 등록</div>
                         <v-spacer></v-spacer>
                         <v-icon
                             color="white"
@@ -81,7 +90,7 @@
                         >mdi-close</v-icon>
                     </v-toolbar>
                     <v-card-text>
-                        <Process :offline="offline"
+                        <ProcessDefinition :offline="offline"
                             :isNew="!value.idx"
                             :editMode="true"
                             :inList="false"
@@ -102,7 +111,7 @@
                         class="elevation-0"
                         height="50px"
                     >
-                        <div style="color:white; font-size:17px; font-weight:700;">Process 수정</div>
+                        <div style="color:white; font-size:17px; font-weight:700;">ProcessDefinition 수정</div>
                         <v-spacer></v-spacer>
                         <v-icon
                             color="white"
@@ -139,31 +148,44 @@ import { ref } from 'vue';
 import { useTheme } from 'vuetify';
 import DrawerContent from '../../../layouts/components/DrawerContent.vue';
 import BaseGrid from '../base-ui/BaseGrid.vue'
-import Process from '../Process.vue'
+import ProcessDefinition from '../ProcessDefinition.vue'
 import String from '../primitives/String.vue'
 import MessageDetailGrid from './MessageDetailGrid.vue'
+import CreateProcess from '../CreateProcess.vue'
 import ModifyProcess from '../ModifyProcess.vue'
 import ReviewProcess from '../ReviewProcess.vue'
 
 export default {
-    name: 'processGrid',
+    name: 'processDefinitionGrid',
     mixins:[BaseGrid],
     components:{
         DrawerContent,
-        Process,
+        ProcessDefinition,
         String,
         MessageDetailGrid,
+        CreateProcess,
         ModifyProcess,
         ReviewProcess,
     },
     data: () => ({
-        path: 'processes',
+        path: 'processDefinitions',
+        createProcessDialog: false,
         modifyProcessDialog: false,
         reviewProcessDialog: false,
     }),
     watch: {
     },
     methods:{
+        createProcess(params){
+            try{
+                this.repository.invoke(this.getSelectedItem(), "createProcess", params)
+                this.$EventBus.$emit('show-success','CreateProcess 성공적으로 처리되었습니다.')
+                this.createProcessDialog = false
+            }catch(e){
+                console.log(e)
+            }
+            
+        },
         modifyProcess(params){
             try{
                 this.repository.invoke(this.getSelectedItem(), "modifyProcess", params)

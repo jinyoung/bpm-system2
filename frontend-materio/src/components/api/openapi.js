@@ -1,4 +1,4 @@
-import processYaml from "./process-openapi.yaml";
+import processDefinitionYaml from "./processDefinition-openapi.yaml";
 import instanceYaml from "./instance-openapi.yaml";
 import taskListYaml from "./taskList-openapi.yaml";
 import chatroomYaml from "./chatroom-openapi.yaml";
@@ -6,8 +6,8 @@ import YAML from "json2yaml";
 
 let apiSpec = "";
 
-let processSpec = YAML.stringify(processYaml);
-apiSpec += processSpec;
+let processDefinitionSpec = YAML.stringify(processDefinitionYaml);
+apiSpec += processDefinitionSpec;
 
 let instanceSpec = YAML.stringify(instanceYaml);
 apiSpec += instanceSpec;
